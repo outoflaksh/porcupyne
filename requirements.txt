@@ -4,3 +4,4 @@ gunicorn
 jinja2
 pytest
 requests
+pre-commit
