@@ -1,6 +1,6 @@
 FROM python:3.8-slim
 
-COPY ./src/app /src/app
+COPY ./src /src
 COPY ./entrypoint.sh /entrypoint.sh
 COPY ./requirements.txt /requirements.txt
 
