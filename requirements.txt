@@ -8,3 +8,4 @@ pre-commit
 pillow
 pytesseract
 python-dotenv
+python-multipart
