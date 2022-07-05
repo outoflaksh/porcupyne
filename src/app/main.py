@@ -43,6 +43,9 @@ async def image_echo_view(
     if not settings.echo_active:
         raise HTTPException(detail="Invalid endpoint!", status_code=400)
 
+    # Make the uploads dir if doesn't exist
+    UPLOAD_DIR.mkdir(exist_ok=True)
+
     # Read the bytes of the file
     byte_str = io.BytesIO(await file.read())
 
