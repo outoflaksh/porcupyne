@@ -1,3 +1,6 @@
+# Environment Variables
+/*.env
+
 # Editors
 .vscode/*
 !.vscode/settings.json
