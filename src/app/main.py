@@ -2,7 +2,7 @@ import pathlib
 import io
 import uuid
 
-from fastapi import FastAPI, Request, Depends, File, UploadFile
+from fastapi import FastAPI, HTTPException, Request, Depends, File, UploadFile
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.templating import Jinja2Templates
 
@@ -37,7 +37,12 @@ def read_index(request: Request, settings: Settings = Depends(get_settings)):
 
 # Image upload test endpoint -> http POST
 @app.post("/img-echo", response_class=FileResponse)
-async def image_echo_view(file: UploadFile = File(...)):
+async def image_echo_view(
+    file: UploadFile = File(...), settings: Settings = Depends(get_settings)
+):
+    if not settings.echo_active:
+        raise HTTPException(detail="Invalid endpoint!", status_code=400)
+
     # Read the bytes of the file
     byte_str = io.BytesIO(await file.read())
 
