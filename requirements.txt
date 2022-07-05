@@ -7,3 +7,4 @@ requests
 pre-commit
 pillow
 pytesseract
+python-dotenv
