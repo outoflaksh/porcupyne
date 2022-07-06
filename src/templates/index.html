@@ -114,11 +114,43 @@
             color: #fff;
             font-size: 0.9rem;
             font-weight: 500;
+            flex-direction: column;
+            text-align: right;
+        }
+
+        .links li {
+            margin-top: 5px;
         }
 
         .links a {
             text-decoration: underline;
             text-underline-offset: 3px;
+        }
+
+        @media only screen and (max-width: 860px) {
+            .heading {
+                font-size: 2.2rem;
+            }
+
+            .links {
+                flex: 4;
+                font-size: 0.8rem;
+            }
+        }
+
+        @media only screen and (max-width: 400px) {
+            .heading {
+                font-size: 2rem;
+                width: 85%;
+            }
+
+            .links {
+                flex: 5;
+            }
+
+            .links li {
+                margin-top: 5px;
+            }
         }
     </style>
     <title>Porcupyne</title>
@@ -127,7 +159,7 @@
 
 <body>
     <div class="grid-bg">
-        <nav style="display: flex; width: 100%;">
+        <nav style="display: flex; width: 100%; align-items: center;">
             <li class="brand">Porcupyne</li>
             <div class="links">
                 <li><a href="https://github.com/outoflaksh/porcupyne/">View source</a></li>
@@ -137,8 +169,9 @@
         </nav>
         <div class=" info">
             <h1 class="heading">Image-to-text <span>microservice</span><br>built with Python</h1>
-            <a href="https://github.com/outoflaksh/porcupyne/" target="_blank"><button class="btn">Explore the
-                    docs</button></a>
+            <a href="https://github.com/outoflaksh/porcupyne/blob/main/README.md#docs" target="_blank">
+                <button class="btn">Explore the docs</button>
+            </a>
         </div>
     </div>
 </body>
