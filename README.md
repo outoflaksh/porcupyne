@@ -29,8 +29,8 @@
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
       </ul>
-    </li>\
-    <li><a href="#contributing">Contributing</a></li>\
+    </li>
+    <li><a href="#contributing">Contributing</a></li>
   </ol>
 </details>
 
@@ -52,6 +52,50 @@ The microservice also cleans and processes the uploaded images with OpenCV; impr
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
+
+## Usage
+
+It's extremely easy to use the Porcupyne OCR service. One simply needs to upload an image file they want converted via an HTTP POST request to `https://porcupyne.herokuapp.com/convert/` and a JSON response with the results obtained after applying OCR will be recieved back.
+
+The request body will be of the form of a multipart form.
+
+You can use your preffered API client to test it out. Example Python usage is also provided below:
+
+```sh
+  python3 -m pip install requests
+```
+
+```py
+  import requests
+
+  url = "https://porcupyne.herokuapp.com/convert"
+  img_path = "/downloads/img.png"
+  files = {"file": open(img_path, "rb")}
+
+  response = requests.post(url, files=files)
+
+  if response.status_code == 200:
+    print(response.json())
+```
+
+Output:
+
+```sh
+{
+	"results": {
+		"raw": "It was the best of\ntimes, it was the worst\nof times, it was the age\nof wisdom, it was the\nage of foolishness...\n\f",
+		"cleaned": "It was the best of times, it was the worst of times, it was the age of wisdom, it was the age of foolishness...",
+		"lines": [
+			"It was the best of",
+			"times, it was the worst",
+			"of times, it was the age",
+			"of wisdom, it was the",
+			"age of foolishness...",
+			"\f"
+		]
+	}
+}
+```
 
 ## Getting Started
 
