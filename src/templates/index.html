@@ -5,11 +5,142 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-size: 18px;
+            height: 100vh;
+            width: 100%;
+            background: #005C97;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #363795, #005C97);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #363795, #005C97);
+            font-family: 'Raleway', sans-serif;
+        }
+
+        button {
+            font: inherit;
+            color: inherit;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit
+        }
+
+        li {
+            list-style: none;
+        }
+
+        nav {
+            padding: 25px;
+            position: absolute;
+            justify-content: space-between;
+        }
+
+        .info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            flex-direction: column;
+        }
+
+        .grid-bg {
+            height: 100%;
+            background-size: 40px 40px;
+            background-image: radial-gradient(circle, #ffffff1a 1.5px, rgba(0, 0, 0, 0) 1px);
+        }
+
+        .heading {
+            font-size: 3.6rem;
+            font-weight: 900;
+            color: rgb(255, 255, 255);
+            width: 60%;
+            text-align: center;
+        }
+
+        .heading span {
+            background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn {
+            border: none;
+            background-image: linear-gradient(to right, #4776E6 0%, #8E54E9 51%, #4776E6 100%);
+            margin: 10px;
+            padding: 15px 45px;
+            text-align: center;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            box-shadow: 0 0 10px rgba(238, 238, 238, 0.432);
+            border-radius: 10px;
+            display: block;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 40px;
+        }
+
+        .btn:hover {
+            background-position: right center;
+            /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .brand {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #fff;
+            flex: 5;
+        }
+
+        .links {
+            display: flex;
+            justify-content: space-between;
+            flex: 1;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .links a {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+    </style>
     <title>Porcupyne</title>
 </head>
 
+
 <body>
-    <h1>Porcupyne</h1>
+    <div class="grid-bg">
+        <nav style="display: flex; width: 100%;">
+            <li class="brand">Porcupyne</li>
+            <div class="links">
+                <li><a href="https://github.com/outoflaksh/porcupyne/">View source</a></li>
+                <li>Created by <a href="https://github.com/outoflaksh/" target="_blank">outoflaksh</a></li>
+            </div>
+
+        </nav>
+        <div class=" info">
+            <h1 class="heading">Image-to-text <span>microservice</span><br>built with Python</h1>
+            <a href="https://github.com/outoflaksh/porcupyne/" target="_blank"><button class="btn">Explore the
+                    docs</button></a>
+        </div>
+    </div>
 </body>
 
 </html>
