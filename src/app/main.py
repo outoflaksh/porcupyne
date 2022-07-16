@@ -1,16 +1,15 @@
 import pathlib
 import io
 import uuid
-import pytesseract
 
 from fastapi import FastAPI, HTTPException, Request, Depends, File, UploadFile, status
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.templating import Jinja2Templates
 
 from functools import lru_cache
-from PIL import Image
 
 from .fastapi_settings import Settings
+from .ocr import apply_ocr, read_img
 
 
 # Define the base directory
@@ -40,16 +39,9 @@ def read_index(request: Request):
 # Image-to-text endpoint -> http POST
 @app.post("/convert")
 async def post_image_to_text(file: UploadFile = File(...)):
-    byte_str = io.BytesIO(await file.read())
+    img = await read_img(file, HTTPException(status_code=422, detail="Invalid image"))
 
-    try:
-        img = Image.open(byte_str)
-    except:
-        raise HTTPException(
-            detail="Invalid image!", status_code=status.HTTP_422_UNPROCESSABLE_ENTITY
-        )
-
-    ocr_predictions: str = pytesseract.image_to_string(img)
+    ocr_predictions: str = apply_ocr(img)
 
     return {
         "results": {
