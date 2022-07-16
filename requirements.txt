@@ -9,3 +9,5 @@ pillow
 pytesseract
 python-dotenv
 python-multipart
+opencv-python
+numpy
