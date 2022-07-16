@@ -1,6 +1,7 @@
 import pathlib
 import io
 import uuid
+import pytesseract
 
 from fastapi import FastAPI, HTTPException, Request, Depends, File, UploadFile, status
 from fastapi.responses import HTMLResponse, FileResponse
@@ -41,7 +42,7 @@ def read_index(request: Request):
 async def post_image_to_text(file: UploadFile = File(...)):
     img = await read_img(file, HTTPException(status_code=422, detail="Invalid image"))
 
-    ocr_predictions: str = apply_ocr(img)
+    ocr_predictions: str = pytesseract.image_to_string(img)
 
     return {
         "results": {
