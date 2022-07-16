@@ -1,4 +1,3 @@
-import cv2
 import io
 import pytesseract
 
@@ -26,17 +25,23 @@ async def read_img(img: UploadFile, read_exception):
 
 
 def resize_img(img_array: ndarray):
+    import cv2
+
     # Resize image
     return cv2.resize(img_array, None, fx=1.2, fy=1.2, interpolation=cv2.INTER_CUBIC)
 
 
 def convert_to_grayscale(img_array):
+    import cv2
+
     img = cv2.cvtColor(img_array, cv2.COLOR_BGR2GRAY)
 
     return img
 
 
 def denoise_img(img_array):
+    import cv2
+
     kernel = ones((1, 1), uint8)
     img = cv2.dilate(img_array, kernel, iterations=1)
     img = cv2.erode(img_array, kernel, iterations=1)
@@ -45,6 +50,8 @@ def denoise_img(img_array):
 
 
 def blur_img(img_array):
+    import cv2
+
     # Extract & blur the bg so that the text is highlighted
     bg = cv2.threshold(
         cv2.medianBlur(img_array, 3), 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU
