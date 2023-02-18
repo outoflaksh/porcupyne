@@ -69,7 +69,7 @@ You can use your preffered API client to test it out. Example Python usage is al
 ```py
   import requests
 
-  url = "https://porcupyne.herokuapp.com/convert"
+  url = "https://porcupyne.onrender.com/convert"
   img_path = "/downloads/img.png"
   files = {"file": open(img_path, "rb")}
 
